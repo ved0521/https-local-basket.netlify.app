@@ -1,0 +1,40 @@
+.menu-item {
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.menu-item::after {
+  content: "";
+  position: absolute;
+  background-color: #7c9953;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -16px;
+}
+.menu-item:hover::after {
+  width: 100%;
+  transition: all 0.9s;
+}
+.menu-item.active {
+  font-weight: 700;
+  color: #7c9953;
+}
+/* underline only on large screens (>= 1024px) */
+@media (min-width: 1024px) {
+  .menu-item.active::after {
+    width: 100%;
+  }
+}
+/* hide underline on sm & md and only change color */
+@media (max-width: 1023px) {
+  .menu-item::after {
+    width: 0 !important; 
+  }
+
+  .menu-item.active {
+    color: #7c9953; 
+  }
+}

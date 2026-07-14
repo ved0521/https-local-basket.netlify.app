@@ -1,0 +1,95 @@
+<!-- Header -->
+<div class="sticky top-0 left-0 w-full z-50 shadow transition-all duration-300 bg-white flex flex-col lg:flex-row">
+  <!-- Logo Section -->
+  <div class="logo bg-[#7c9953] flex items-center justify-between w-full lg:w-40 px-4 transition-all duration-300" [ngClass]="{'py-1': isScrolled, 'py-3 lg:py-0': !isScrolled}">
+    <!-- Logo Image -->
+   <a (click)="goToHome()" class="cursor-pointer">
+    <img src="Logo/white-logo.png"alt="Logo"class="transition-all duration-300"[ngClass]="{'h-12': isScrolled, 'h-16': !isScrolled}">
+   </a>
+    <!-- Right side (Mobile only) -->
+    <div class="flex items-center gap-3 lg:hidden">
+      <!-- Get A Quote button -->
+      <a routerLink="/Quote"class="bg-white text-[#7c9953] px-4 py-2 rounded-md font-medium border border-[#7c9953] hover:bg-[#7c9953] hover:text-white transition">
+        Get A Quote
+      </a>
+      <!-- Mobile Hamburger -->
+      <button class="text-white text-2xl focus:outline-none" aria-label="Toggle Menu"(click)="isMenuOpen = !isMenuOpen">
+        <i class="fa-solid" [ngClass]="isMenuOpen ? 'fa-xmark': 'fa-bars'"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Right Side -->
+  <div class="flex flex-col flex-1">
+  <!-- Info Strip (Desktop) -->
+<div class="hidden md:flex bg-[#7c9953] text-white px-4 py-3 flex-col md:flex-row md:justify-between md:items-center gap-3 md:gap-0 text-base lg:text-sm transition-all duration-300">
+  <span class="text-center md:text-left">Welcome to the Local Basket!</span>
+  
+  <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 text-lg lg:text-sm justify-center md:justify-end">
+    <!-- Phone -->
+    <a href="tel:+17785853555"
+       class="group flex items-center gap-2 justify-center relative transition-all duration-300 hover:text-yellow-200">
+      <i class="fa-solid fa-mobile text-white group-hover:scale-125 group-hover:text-yellow-200 transition-transform duration-300"></i>
+      <span class="relative">
+        +1 (778) 585-3555
+        <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-200 transition-all duration-300 group-hover:w-full"></span>
+      </span>
+    </a>
+
+    <span class="hidden sm:block border-l border-white h-7"></span>
+
+    <!-- Email -->
+    <a href="mailto:info@thelocalbasket.com"
+       class="group flex items-center gap-2 justify-center relative transition-all duration-300 hover:text-yellow-200">
+      <i class="fa-solid fa-envelope text-white group-hover:scale-125 group-hover:text-yellow-200 transition-transform duration-300"></i>
+      <span class="relative">
+        info&#64;thelocalbasket.com
+        <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-200 transition-all duration-300 group-hover:w-full"></span>
+      </span>
+    </a>
+  </div>
+</div>
+  <div>
+    <nav class="hidden lg:flex justify-between bg-white px-4 py-4 gap-8 font-medium text-center text-sm">
+    <div class="flex gap-8">
+           <a (click)="selectMenu('home'); scrollTo('sliderSection')"class="menu-item text-gray-700 hover:text-[#7c9953] cursor-pointer"[class.active]="selectedMenu === 'home'"routerLink="/home">Home</a>
+          <a (click)="selectMenu('services');scrollTo('Services')" class="menu-item text-gray-700 hover:text-[#7c9953] cursor-pointer " [class.active]="selectedMenu === 'services'">Services</a>
+          <a (click)="selectMenu('products'); scrollTo('products')" class="menu-item text-gray-700 hover:text-[#7c9953] cursor-pointer"[class.active]="selectedMenu === 'products'">Products</a>
+          <a (click)="selectMenu('aboutus'); scrollTo('aboutus')" class="menu-item text-gray-700 hover:text-[#7c9953] cursor-pointer"[class.active]="selectedMenu === 'aboutus'">About Us</a>
+          <a (click)="selectMenu('contact'); scrollTo('contact')" class="menu-item text-gray-700 hover:text-[#7c9953] cursor-pointer"[class.active]="selectedMenu === 'contact'">Contact</a>
+        </div>
+        <div>
+          <a routerLink="/Quote"(click)="selectedMenu=''"class="bg-[#7c9953] text-white px-6 py-3 rounded-md font-medium hover:bg-[#fff] hover:text-black border border-gray-300 transition">
+           Get A Quote
+          </a>
+        </div>
+      </nav>
+      <!-- Mobile Sliding Menu -->
+      <div class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 z-50 flex flex-col overflow-y-auto" [ngClass]="{'-translate-x-full': !isMenuOpen, 'translate-x-0': isMenuOpen}">
+        <div class="bg-[#7c9953] text-white px-4 py-6 flex flex-col text-base">
+          <span class="text-lg font-medium text-center mb-3">Welcome to the local basket!</span>
+          <div class="flex flex-col gap-3 text-sm items-center">
+            <a href="tel:+17785853555" class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile text-white"></i>
+              <span>+1 (778) 585-3555</span>
+            </a>
+            <a href="mailto:info@thelocalbasket.com" class="flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-white"></i>
+              <span>info&#64;thelocalbasket.com</span>
+            </a>
+          </div>
+        </div>
+        <!-- Mobile Nav Links -->
+        <nav class="flex flex-col bg-white gap-4 font-medium text-lg p-4">
+          <a (click)="selectMenu('home'); scrollTo('sliderSection'); isMenuOpen=false"class="menu-item text-gray-700 hover:text-[#7c9953]"[class.active]="selectedMenu === 'home'" routerLink="/Home">Home</a>
+          <a (click)="selectMenu('services'); scrollTo('services'); isMenuOpen=false"class="menu-item text-gray-700 hover:text-[#7c9953]" [class.active]="selectedMenu === 'services'">Services</a>
+          <a (click)="selectMenu('products'); scrollTo('products'); isMenuOpen=false" class="menu-item text-gray-700 hover:text-[#7c9953]"[class.active]="selectedMenu === 'products'">Products</a>
+          <a (click)="selectMenu('aboutus'); scrollTo('aboutus'); isMenuOpen=false"class="menu-item text-gray-700 hover:text-[#7c9953]" [class.active]="selectedMenu === 'aboutus'">About Us</a>
+          <a (click)="selectMenu('contact'); scrollTo('contact'); isMenuOpen=false" class="menu-item text-gray-700 hover:text-[#7c9953]"[class.active]="selectedMenu === 'contact'">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

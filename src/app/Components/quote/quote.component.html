@@ -1,0 +1,149 @@
+<section id="home" class="flex flex-col lg:flex-row w-full min-h-[83vh] bg-white/75 p-4 sm:p-6 lg:p-5">
+  <!-- Left Content -->
+  <div class="flex flex-col justify-center items-center lg:items-start gap-4 sm:gap-6 w-full lg:w-1/2 text-center lg:text-left">
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-light  Heading">Contact us</h1>
+    <p class="text-gray-700 leading-relaxed text-2xl sm:text-xl subtext">
+      Have a question or want to get in touch? Fill out the form Right
+      and we’ll get back to you as soon as possible.
+    </p>
+
+    <!-- Phone -->
+    <p class="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 text-[#7c9953] text-base sm:text-lg font-medium">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+        class="w-5 h-5 text-[#7c9953]">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M2.25 6.75c0-1.243 1.007-2.25 2.25-2.25h2.25a2.25 2.25 0 0 1 2.25 2.25v.75a2.25 2.25 0 0 1-.659 1.591l-.92.92a16.5 16.5 0 0 0 7.068 7.068l.92-.92A2.25 2.25 0 0 1 16.5 14.25h.75a2.25 2.25 0 0 1 2.25 2.25V18c0 1.243-1.007 2.25-2.25 2.25h-1.5C8.713 20.25 3.75 15.287 3.75 9V7.5c0-1.243 1.007-2.25 2.25-2.25z" />
+      </svg>
+      <a href="tel:+17785853555" class="hover:underline">+1 (778) 585-3555</a>
+    </p>
+
+    <!-- Email -->
+    <p class="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 text-[#7c9953] text-base sm:text-lg font-medium">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+        class="w-5 h-5 text-[#7c9953]">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3 5.25h18A2.25 2.25 0 0 1 23.25 7.5v9a2.25 2.25 0 0 1-2.25 2.25H3A2.25 2.25 0 0 1 .75 16.5v-9A2.25 2.25 0 0 1 3 5.25zm0 0l9 6 9-6" />
+      </svg>
+      <a href="mailto:info@thelocalbasket.ca" class="hover:underline">info@thelocalbasket.ca</a>
+    </p>
+  </div>
+
+  <!-- Right Form -->
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"
+    class="flex flex-col gap-5 sm:gap-6 w-full lg:w-1/2 bg-white/60 rounded-xl p-4 sm:p-6 lg:p-10 mt-6 lg:mt-0 shadow-sm">
+
+    <!-- Business Name -->
+    <mat-form-field class="w-full">
+      <mat-label>Business Name</mat-label>
+      <input matInput formControlName="businessName">
+      <mat-error *ngIf="contactForm.get('businessName')?.hasError('required')">
+        Business Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Name Fields -->
+    <div class="flex flex-col md:flex-row gap-4 sm:gap-6">
+      <mat-form-field class="flex-1">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName">
+        <mat-error *ngIf="contactForm.get('firstName')?.hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="contactForm.get('firstName')?.hasError('pattern')">Only letters are allowed</mat-error>
+      </mat-form-field>
+      <mat-form-field class="flex-1">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+    </div>
+
+    <!-- Email and Phone -->
+    <div class="flex flex-col md:flex-row gap-4 sm:gap-6">
+      <mat-form-field class="flex-1">
+        <mat-label>Email Address</mat-label>
+        <input matInput type="email" formControlName="email">
+        <mat-error *ngIf="contactForm.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="contactForm.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+      </mat-form-field>
+      <mat-form-field class="flex-1">
+        <mat-label>Contact Number</mat-label>
+        <input matInput formControlName="telephone">
+        <mat-error *ngIf="contactForm.get('telephone')?.hasError('required')">Telephone is required</mat-error>
+        <mat-error *ngIf="contactForm.get('telephone')?.hasError('pattern')">Enter a valid 10-digit number</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Choose Items -->
+    <mat-form-field class="w-full">
+      <mat-label>Choose Items</mat-label>
+      <mat-chip-grid #chipGrid formControlName="stateGroup">
+        <mat-chip-row *ngFor="let item of contactForm.value.stateGroup" (removed)="remove(item)">
+          {{ item }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      </mat-chip-grid>
+      <input placeholder="Add item..." [matChipInputFor]="chipGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)"
+        [matAutocomplete]="auto" [formControl]="inputCtrl">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <ng-container *ngFor="let group of filteredGroups | async">
+          <mat-optgroup [label]="group.letter">
+            <mat-option *ngFor="let name of group.names" [value]="name">{{ name }}</mat-option>
+          </mat-optgroup>
+        </ng-container>
+      </mat-autocomplete>
+      <mat-error *ngIf="contactForm.get('stateGroup')?.hasError('required') && contactForm.get('stateGroup')?.touched">
+        Please select at least one item
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Message -->
+    <mat-form-field class="w-full">
+      <mat-label>Message</mat-label>
+      <textarea matInput rows="3" formControlName="message"></textarea>
+    </mat-form-field>
+
+    <!-- Submit -->
+    <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+      <button type="submit"
+        class="bg-[#7c9953] text-white px-6 py-2 rounded-md shadow-md transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+        [disabled]="isLoading">
+        <ng-container *ngIf="isLoading; else normalText">
+          <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+          Sending...
+        </ng-container>
+        <ng-template #normalText>Submit</ng-template>
+      </button>
+
+      <p class="text-xs text-gray-500 text-center sm:text-left max-w-[250px] sm:max-w-none">
+        By submitting this form, you agree to Local Basket
+        <a routerLink="/privacy" class="underline text-[#7c9953]">Privacy Policy</a>
+      </p>
+    </div>
+  </form>
+
+  <!-- Success Popup -->
+  <div *ngIf="showSuccessPopup"
+    class="fixed inset-0 flex items-center justify-center z-10 backdrop-blur-sm bg-black/10">
+    <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 w-72 sm:w-80 text-center transform transition-all duration-500 hover:scale-105">
+      <div class="flex justify-center mb-4">
+        <div class="bg-[#7c9953] rounded-full p-3 flex items-center justify-center">
+          <mat-icon class="text-green-600 text-4xl">check_circle</mat-icon>
+        </div>
+      </div>
+      <h2 class="text-base sm:text-lg font-semibold text-gray-800 mb-2">
+        Submission Successful!
+      </h2>
+      <p class="text-gray-600 text-xs sm:text-sm mb-4">
+        Thank you for your submission. We’ve received your information and will process it shortly.
+      </p>
+      <button class="bg-[#7c9953] text-white px-6 py-2 rounded-md hover:bg-[#6b8845]" (click)="closePopup()">
+        Back to Home
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,231 @@
+<div id="data" class="flex flex-col w-full min-h-screen">
+  <!-- Heeader -->
+<div class="relative bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100  text-center py-20 overflow-hidden">
+  <div  class="flex flex-col gap-8">
+    <h1 class="text-8xl md:text-8xl font-medium mb-2 Heading">Privacy Policy</h1>
+    <p class="text-2xl subtext">Effective October 6, 2025</p>
+  </div>
+  <!-- Curved U-Shape Bottom -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+    <svg class="block w-full h-24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#ffffff" d="M0,64 C360,320 1080,320 1440,64 L1440,320 L0,320 Z"></path>
+    </svg>
+  </div>
+</div>
+  <!-- Table Content -->
+  <div class="flex flex-col lg:flex-row justify-center items-start bg-white  p-10">
+<!-- Table of Content Sidebar -->
+<div class="hidden lg:flex flex-col bg-white lg:w-[20%] h-96 gap-3 sticky top-24">
+  <!-- Information We Collect -->
+  <a 
+    (click)="scrollToSection('data')" 
+    [class.active]="activeSection === 'data'" 
+    class="group relative text-lg transition-all duration-300 cursor-pointer subtext"
+    [ngClass]="activeSection === 'data' ? 'text-orange-600':'text-gray-900'">
+    Information We Collect
+    <span class="absolute left-0 bottom-0 h-[2px] bg-orange-600 transition-all duration-300"
+      [ngClass]="activeSection === 'data'? 'w-48':'w-0 group-hover:w-48'"></span>
+  </a>
+
+  <a 
+    (click)="scrollToSection('use')" 
+    [class.active]="activeSection === 'use'" 
+    class="group relative text-lg transition-all duration-300 cursor-pointer subtext"
+    [ngClass]="activeSection === 'use' ? 'text-orange-600' : 'text-gray-900'">
+    How We Use Your Information
+    <span class="absolute left-0 bottom-0 h-[2px] bg-orange-600 transition-all duration-300"
+      [ngClass]="activeSection === 'use' ? 'w-64' : 'w-0 group-hover:w-64'"></span>
+  </a>
+
+  <a 
+    (click)="scrollToSection('consent')"  
+    [class.active]="activeSection === 'consent'" 
+    class="group relative text-lg transition-all duration-300 cursor-pointer subtext"
+    [ngClass]="activeSection === 'consent' ? 'text-orange-600' : 'text-gray-900'">
+    Sharing Your Information
+    <span class="absolute left-0 bottom-0 h-[2px] bg-orange-600 transition-all duration-300"
+      [ngClass]="activeSection === 'consent' ? 'w-56' : 'w-0 group-hover:w-56'"></span>
+  </a>
+
+  <a 
+    (click)="scrollToSection('security')" 
+    [class.active]="activeSection === 'security'" 
+    class="group relative text-lg transition-all duration-300 cursor-pointer subtext"
+    [ngClass]="activeSection === 'security' ? 'text-orange-600' : 'text-gray-900'">
+    Security and Data Retention
+    <span class="absolute left-0 bottom-0 h-[2px] bg-orange-600 transition-all duration-300"
+      [ngClass]="activeSection === 'security' ? 'w-56' : 'w-0 group-hover:w-56'"></span>
+  </a>
+
+  <a 
+    (click)="scrollToSection('cookies')" 
+    [class.active]="activeSection === 'cookies'" 
+    class="group relative text-lg transition-all duration-300 cursor-pointer subtext"
+    [ngClass]="activeSection === 'cookies' ? 'text-orange-600' : 'text-gray-900'">
+    Cookies and Analytics
+    <span class="absolute left-0 bottom-0 h-[2px] bg-orange-600 transition-all duration-300"
+      [ngClass]="activeSection === 'cookies' ? 'w-46' : 'w-0 group-hover:w-46'"></span>
+  </a>
+
+  <a 
+    (click)="scrollToSection('rights')" 
+    [class.active]="activeSection === 'rights'" 
+    class="group relative text-lg transition-all duration-300 cursor-pointer "
+    [ngClass]="activeSection === 'rights' ? 'text-orange-600' : 'text-gray-900'">
+    Your Rights
+    <span class="absolute left-0 bottom-0 h-[2px] bg-orange-600 transition-all duration-300"
+      [ngClass]="activeSection === 'rights' ? 'w-24' : 'w-0 group-hover:w-24'"></span>
+  </a>
+
+  <a 
+    (click)="scrollToSection('contact')" 
+    [class.active]="activeSection === 'contact'" 
+    class="group relative text-lg transition-all duration-300 cursor-pointer"
+    [ngClass]="activeSection === 'contact' ? 'text-orange-600' : 'text-gray-900'">
+    Contact Us
+    <span class="absolute left-0 bottom-0 h-[2px] bg-orange-600 transition-all duration-300"
+      [ngClass]="activeSection === 'contact' ? 'w-24' : 'w-0 group-hover:w-24'"></span>
+  </a>
+
+  <a 
+    (click)="scrollToSection('updates')" 
+    [class.active]="activeSection === 'updates'" 
+    class="group relative text-lg transition-all duration-300 cursor-pointer subtext"
+    [ngClass]="activeSection === 'updates' ? 'text-orange-600' : 'text-gray-900'">
+    Updates to This Policy
+    <span class="absolute left-0 bottom-0 h-[2px] bg-orange-600 transition-all duration-300"
+      [ngClass]="activeSection === 'updates' ? 'w-46' : 'w-0 group-hover:w-46'"></span>
+  </a>
+
+</div>
+
+<!-- Right Main Content -->
+ <div class="flex flex-col gap-8 lg:w-[80%] ">
+  <div id="intro" class="flex flex-col gap-3 ">
+    <h2 class="text-2xl font-semibold text-gray-800 Heading">Introduction</h2>
+    <p class="text-gray-700 leading-relaxed subtext">
+      <strong>The Local Basket</strong> values your privacy. We’re committed to protecting your personal information in compliance with Canada’s PIPEDA and relevant provincial laws.
+       This Privacy Policy explains how we collect, use, and safeguard your information when you interact with our website, place an order, or subscribe to our services. We are dedicated to ensuring that your personal data is handled responsibly, transparently, and securely. By understanding our practices, you can make informed decisions about the information you share with us, and feel confident that your privacy is our top priority.
+    </p>
+    <p class="text-gray-700 leading-relaxed subtext">
+      This Privacy Policy explains how we collect, use, and safeguard your information when you interact with our website, place an order, or subscribe to our services.
+    </p>
+  </div>
+
+  <div id="data" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-semibold text-gray-800 Heading">Information We Collect</h2>
+    <p class="text-gray-700 leading-relaxed subtext">
+      We collect only the information needed to serve you better. This may include:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1 subtext">
+      <li>Contact details: name, email, phone number, delivery address</li>
+      <li>Payment information: processed securely through third-party providers (we do not store payment details)</li>
+      <li>Order details: products purchased, preferences, transaction history</li>
+      <li>Website usage: cookies, browser type, and anonymous analytics data</li>
+      <li>Marketing preferences: your consent to receive updates or promotions</li>
+    </ul>
+  </div>
+
+  <div id="use" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-semibold text-gray-800 Heading">How We Use Your Information</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1 subtext">
+      <li>Process and deliver your orders</li>
+      <li>Communicate with you about purchases or inquiries</li>
+      <li>Send newsletters, promotions, and seasonal updates (with your consent)</li>
+      <li>Improve our products, services, and website experience</li>
+      <li>Meet legal and accounting obligations</li>
+    </ul>
+    <p class="text-gray-700  !font-semibold subtext">We will never sell or rent your personal information to anyone.</p>
+  </div>
+
+  <div id="consent" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-semibold text-gray-800 Heading">Consent</h2>
+    <p class="text-gray-700 leading-relaxed subtext">
+      By submitting your information (for example, placing an order or subscribing to our newsletter), you consent to our collection and use of your data as outlined here.
+    </p>
+    <p class="text-gray-700 leading-relaxed subtext">
+      You can withdraw your consent at any time by emailing <strong>privacy@thelocalbasket.ca</strong>.
+    </p>
+  </div>
+
+  <div id="share" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-semibold text-gray-800 Heading">Sharing Your Information</h2>
+    <p class="text-gray-700 leading-relaxed subtext">
+      We only share limited personal information with trusted service providers who help us operate our business, including:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1 subtext">
+      <li>Payment processors (e.g., Stripe, Shopify Payments)</li>
+      <li>Shipping and courier services</li>
+      <li>Email and marketing tools (e.g., Mailchimp)</li>
+      <li>Web hosting and analytics platforms</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed ">
+      These partners maintain strict confidentiality and use your data only for the services they provide. We may also disclose your information when required by law.
+    </p>
+  </div>
+
+  <div id="security" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-semibold text-gray-800 Heading">Security and Data Retention</h2>
+    <p class="text-gray-700 leading-relaxed subtext">
+      We take reasonable precautions to protect your data through encryption, password protection, and secure servers.
+    </p>
+    <p class="text-gray-700 leading-relaxed subtext">
+      Your information is kept only as long as necessary to fulfill the purposes listed in this policy or as required by law. Afterwards, it is securely deleted or anonymized.
+    </p>
+  </div>
+
+  <div id="cookies" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-semibold text-gray-800  Heading">Cookies and Analytics</h2>
+    <p class="text-gray-700 leading-relaxed subtext">
+      Our website uses cookies to improve functionality and analyze site traffic. You can disable cookies through your browser settings, though some features may not work properly without them.
+    </p>
+    <p class="text-gray-700 leading-relaxed subtext">
+      We may use Google Analytics or similar tools to collect anonymous usage data to help enhance your browsing experience.
+    </p>
+  </div>
+
+  <div id="rights" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-semibold text-gray-800 Heading">Your Rights</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1 subtext">
+      <li>Access the personal information we hold about you</li>
+      <li>Request corrections or updates</li>
+      <li>Withdraw consent for marketing communications</li>
+      <li>Request deletion of your personal data, where legally possible</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed subtext">
+      To exercise these rights, please contact us directly.
+    </p>
+  </div>
+
+  <div id="contact" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-semibold text-gray-800 Heading">Contact Us</h2>
+    <p class="text-gray-700 leading-relaxed subtext">
+      <strong>The Local Basket</strong><br>
+      📧 <strong>privacy@thelocalbasket.ca</strong><br>
+      🌐 <strong>www.thelocalbasket.com</strong><br>
+      Import & Export of Fruits, Vegetables, Herbs & Flowers
+    </p>
+  </div>
+
+  <div id="updates" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-semibold text-gray-800 Heading">Updates to This Policy</h2>
+    <p class="text-gray-700  leading-relaxed subtext">
+      We may update this Privacy Policy periodically to reflect changes in practices or legal requirements. The latest version will always be available on our website, with the Effective Date clearly shown at the top.
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-3">
+    <p class="text-gray-700 leading-relaxed subtext">
+      🥕 Thank you for supporting The Local Basket and our mission to bring local goods straight from community growers and artisans to your home — with privacy, trust, and transparency at every step.
+    </p>
+  </div>
+
+</div>
+
+</div>
+
+
+
+
+
+

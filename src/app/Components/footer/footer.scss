@@ -1,0 +1,93 @@
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgb(161, 161, 167);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(10, 10, 10);
+  font-size: 1.2rem;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+/* hover effect for all icons */
+.social-icon:hover {
+  background: black;
+  color: inherit;
+}
+
+/* WhatsApp color */
+.social-icon.whatsapp:hover {
+  color: #25D366;
+  background-color: #fff;
+  transform: scale(1.2);
+}
+
+/* Email color*/
+.social-icon.email:hover {
+  color: #0078D7;
+  background-color: #fff;
+  transform: scale(1.2);
+}
+
+/* Facebook color */
+.social-icon.facebook:hover {
+  color: #1877F2;
+  background-color: #fff;
+  transform: scale(1.2);
+}
+
+/* Instagram */
+.social-icon.instagram:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  transform: scale(1.2);
+}
+
+/* YouTube */
+.social-icon.youtube:hover {
+  color: #FF0000;
+  background-color: #fff;
+  transform: scale(1.2);
+}
+/* Tooltip styling */
+.social-icon {
+  position: relative; 
+}
+
+.social-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff; 
+  color: #000;
+  padding: 2px 8px;
+  border-radius:2px;
+  font-size: 0.8rem;
+  white-space: nowrap; 
+  opacity: 0; 
+  pointer-events: none; 
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover::after {
+  opacity: 1; /* Show the tooltip on hover */
+  transform: translateX(-50%) translateY(-5px); 
+}
+
+// .subtext{
+//   font-family: "Zilla Slab", serif;
+//   font-weight: 500;
+//   font-style: normal;
+// }
+// .Heading{
+//   font-family: "Playfair Display", serif;
+//   font-weight: 700;
+//   font-style: normal;
+// }
